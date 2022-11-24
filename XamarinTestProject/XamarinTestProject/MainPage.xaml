@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTestProject.MainPage">
+    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="24">
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,0,0,75" >
+            <StackLayout HorizontalOptions="Fill" Padding="0" Margin="0" BindableLayout.ItemsSource="{Binding ItemContainers}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout Margin="0" >
+                            <!-- TITLE -->
+                            <Frame AbsoluteLayout.LayoutBounds="0,0,40,40" AbsoluteLayout.LayoutFlags="None" Margin="0" Padding="0" BackgroundColor="Gray" BorderColor="Green" >
+                                <Label Text="{Binding Title}" VerticalOptions="Center" HorizontalOptions="Center" />
+                            </Frame>
+                            <!-- ITEMS -->
+                            <Frame AbsoluteLayout.LayoutBounds="0,52,1,AutoSize" AbsoluteLayout.LayoutFlags="WidthProportional" Background="Gray" BorderColor="Red">
+                                <StackLayout Padding="0" Margin="0" BindableLayout.ItemsSource="{Binding Items}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Text="{Binding .}" />
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </Frame>
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+        
+        <Button AbsoluteLayout.LayoutBounds="0.65,1,0.25,50" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" Text="Add" Command="{Binding AddCommand}" />
+        <Button AbsoluteLayout.LayoutBounds="1,1,0.25,50" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" Text="Clear" Command="{Binding ClearCommand}" />
+        <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutBounds="0,1,0.45,50"  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" >
+            <Label Text="Multiline" FontSize="Small" HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+            <Switch HorizontalOptions="End" VerticalOptions="Center" IsToggled="{Binding Multiline}" />
+        </StackLayout>
+
+    </AbsoluteLayout>
+</ContentPage>
